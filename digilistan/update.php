@@ -39,7 +39,7 @@ foreach ($allDates as $date) {
         $htmlString = file_get_contents($url);
         preg_match_all($pattern, $htmlString, $matches);
         $artistPlusTitleArray = array_unique($matches[2]);
-
+        $artistPlusTitleArray = array_slice($artistPlusTitleArray, 0, $ini_array["top"]);
         if (!in_array($yearNow, $ini_array["years"])) {
             $saveString .= "####" . $yearNow . "\n";
             $ini_array["years"][] = $yearNow;
